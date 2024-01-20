@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es6",
+    "module": "ES2022",
+    "declaration": true,
+    "strict": true
+  },
+  "path": {
+    "@/*": ["src/*"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

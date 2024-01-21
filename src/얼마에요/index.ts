@@ -1,26 +1,13 @@
+const isInteger = (num: number) => num % 1 === 0;
+
 export const 얼마에요 = (number: number): string => {
-  const units: string[] = [
-    '',
-    '만',
-    '억',
-    '조',
-    '경',
-    '해',
-    '자',
-    '양',
-    '구',
-    '간',
-    '정',
-    '재',
-    '극',
-    '항하사',
-    '아승기',
-    '나유타',
-    '불가사의',
-    '무량대수',
-  ];
-  const nums: string[] = ['십', '백', '천'];
+  if (number > 9_007_199_254_740_992) {
+    throw new Error('얼마에요는 9_007_199_254_740_992 이하만 가능합니다.');
+  }
+  const units: string[] = ['', '만', '억', '조', '경'];
+  const nums: string[] = ['', '십', '백', '천'];
   const trans: { [key: string]: string } = {
+    '0': '',
     '1': '일',
     '2': '이',
     '3': '삼',
@@ -32,5 +19,22 @@ export const 얼마에요 = (number: number): string => {
     '9': '구',
   };
 
-  return '';
+  const numberArray = number.toString().split('').reverse();
+
+  const data = numberArray.map((number, index) => {
+    const unit = isInteger(index / 4) ? units[index / 4] : '';
+
+    if (number !== '0') {
+      return (
+        trans[number] + (trans[number] === '' ? '' : nums[index % 4]) + unit
+      );
+    } else if (
+      unit !== '' &&
+      numberArray.slice(index, index + 4).join('') !== '0000'
+    ) {
+      return unit;
+    } else return '';
+  });
+
+  return data.reverse().join('');
 };

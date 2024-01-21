@@ -1,8 +1,8 @@
 const isInteger = (num: number) => num % 1 === 0;
 
-export const 얼마에요 = (number: number): string => {
-  if (number > 9_007_199_254_740_992) {
-    throw new Error('얼마에요는 9_007_199_254_740_992 이하만 가능합니다.');
+export const kNumber = (number: number): string => {
+  if (number > 9_007_199_254_740_991) {
+    throw new Error('k-number: number is too big');
   }
   const units: string[] = ['', '만', '억', '조', '경'];
   const nums: string[] = ['', '십', '백', '천'];

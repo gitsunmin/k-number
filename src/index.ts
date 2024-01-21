@@ -1,1 +1,1 @@
-export * from './얼마에요/index';
+export * from './k-number';

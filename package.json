@@ -1,7 +1,8 @@
 {
-  "name": "@gitsunmin/얼마에요",
+  "name": "@gitsunmin/k-number",
   "version": "0.0.1",
   "description": "금액을 입력해서 한국어 표기의 금액을 반환하는 함수를 제공하는 라이브러리입니다.",
+  "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -10,7 +11,12 @@
     "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "money",
+    "number",
+    "korean",
+    "transform"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

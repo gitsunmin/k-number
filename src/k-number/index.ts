@@ -1,9 +1,12 @@
 const isInteger = (num: number) => num % 1 === 0;
 
+export const MAX_NUMBER = 9_007_199_254_740_991;
+
 export const kNumber = (number: number): string => {
-  if (number > 9_007_199_254_740_991) {
+  if (number > MAX_NUMBER) {
     throw new Error('k-number: number is too big');
   }
+
   const units: string[] = ['', '만', '억', '조', '경'];
   const nums: string[] = ['', '십', '백', '천'];
   const trans: { [key: string]: string } = {

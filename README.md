@@ -17,4 +17,6 @@ console.log('result:', result); //  // 삼천구백삼십구만삼천삼백팔�
 npm install @gitsunmin/얼마에요
 ```
 
+### 라이센스
 
+[MIT](./LICENSE)

@@ -1,35 +1,21 @@
-const isInteger = (num: number) => num % 1 === 0;
-
-export const MAX_NUMBER = 9_007_199_254_740_991;
+import { MAX_NUMBER, MAP_NUMBER_AND_KOREAN, KOREAN_UNITS } from "../constants";
+import type { KoreanUnit, NumberString} from '../constants';
+import { isInteger } from "../utils";
 
 export const kNumber = (number: number): string => {
-  if (number > MAX_NUMBER) {
-    throw new Error('k-number: number is too big');
-  }
+  if (number > MAX_NUMBER) throw new Error('[k-number]: number is too big');
 
-  const units: string[] = ['', '만', '억', '조', '경'];
-  const nums: string[] = ['', '십', '백', '천'];
-  const trans: { [key: string]: string } = {
-    '0': '',
-    '1': '일',
-    '2': '이',
-    '3': '삼',
-    '4': '사',
-    '5': '오',
-    '6': '육',
-    '7': '칠',
-    '8': '팔',
-    '9': '구',
-  };
+  const units: (KoreanUnit | '')[] = ['', ...KOREAN_UNITS.slice(3)];
+  const unitInSameRange: (KoreanUnit | '')[] = ['', ...KOREAN_UNITS.slice(0, 3)];
 
-  const numberArray = number.toString().split('').reverse();
+  const numberArray = number.toString().split('').reverse() as NumberString[];
 
   const data = numberArray.map((number, index) => {
     const unit = isInteger(index / 4) ? units[index / 4] : '';
 
     if (number !== '0') {
       return (
-        trans[number] + (trans[number] === '' ? '' : nums[index % 4]) + unit
+        MAP_NUMBER_AND_KOREAN[number] + (MAP_NUMBER_AND_KOREAN[number] === '' ? '' : unitInSameRange[index % 4]) + unit
       );
     } else if (
       unit !== '' &&

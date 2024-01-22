@@ -1,3 +1,8 @@
+## [0.0.3]
+- provide MAX_NUMBER
+- provide utils (isInteger)
+- provide types
+
 ## [0.0.2]
 - fix error: Fixing issues that cannot be imported
 

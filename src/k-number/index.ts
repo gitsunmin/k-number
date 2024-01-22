@@ -1,29 +1,68 @@
-import { MAX_NUMBER, MAP_NUMBER_AND_KOREAN, KOREAN_UNITS } from "../constants";
-import type { KoreanUnit, NumberString} from '../constants';
-import { isInteger } from "../utils";
+import type { KNumberFormat, NumberString } from '../types';
+import {
+  MAX_NUMBER,
+  NUMBER_AND_KOREAN_RECORD,
+  UNIT_IN_OTHERS_RANGE,
+  UNIT_IN_SAME_RANGE,
+} from '../constants';
 
-export const kNumber = (number: number): string => {
+import { isInteger } from '../utils';
+
+type KNumberConfig = {
+  format?: KNumberFormat;
+};
+
+const FunctionByFormat = (format: KNumberFormat) =>
+  ({
+    korean_only: (
+      number: NumberString,
+      index: number,
+      array: NumberString[]
+    ) => {
+      const unit = isInteger(index / 4) ? UNIT_IN_OTHERS_RANGE[index / 4] : '';
+
+      if (number !== '0') {
+        return (
+          NUMBER_AND_KOREAN_RECORD[number] +
+          UNIT_IN_SAME_RANGE[index % 4] +
+          unit
+        );
+      } else if (
+        unit !== '' &&
+        array.slice(index, index + 4).join('') !== '0000'
+      ) {
+        return unit;
+      } else {
+        return '';
+      }
+    },
+    korean_and_number: (
+      number: NumberString,
+      index: number,
+      array: NumberString[]
+    ) => {
+      const unit = isInteger(index / 4) ? UNIT_IN_OTHERS_RANGE[index / 4] : '';
+
+      if (number !== '0') {
+        return number + UNIT_IN_SAME_RANGE[index % 4] + unit;
+      } else if (
+        unit !== '' &&
+        array.slice(index, index + 4).join('') !== '0000'
+      ) {
+        return unit;
+      } else {
+        return '';
+      }
+    },
+  }[format]);
+
+export const kNumber = (number: number, config?: KNumberConfig): string => {
   if (number > MAX_NUMBER) throw new Error('[k-number]: number is too big');
-
-  const units: (KoreanUnit | '')[] = ['', ...KOREAN_UNITS.slice(3)];
-  const unitInSameRange: (KoreanUnit | '')[] = ['', ...KOREAN_UNITS.slice(0, 3)];
 
   const numberArray = number.toString().split('').reverse() as NumberString[];
 
-  const data = numberArray.map((number, index) => {
-    const unit = isInteger(index / 4) ? units[index / 4] : '';
-
-    if (number !== '0') {
-      return (
-        MAP_NUMBER_AND_KOREAN[number] + (MAP_NUMBER_AND_KOREAN[number] === '' ? '' : unitInSameRange[index % 4]) + unit
-      );
-    } else if (
-      unit !== '' &&
-      numberArray.slice(index, index + 4).join('') !== '0000'
-    ) {
-      return unit;
-    } else return '';
-  });
-
-  return data.reverse().join('');
+  return numberArray
+    .map(FunctionByFormat(config?.format ?? 'korean_only'))
+    .reverse()
+    .join('');
 };

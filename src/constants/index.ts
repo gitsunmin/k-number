@@ -27,7 +27,7 @@ export const KOREAN_NUMBERS = [
 
 export const KOREAN_UNITS = ['십', '백', '천', '만', '억', '조', '경'] as const;
 
-export const K_NUMBER_FORMAT = ['korean_only', 'korean_and_number'] as const;
+export const K_NUMBER_FORMAT = ['korean-only', 'unit-only'] as const;
 
 export const MAX_NUMBER = 9_007_199_254_740_991;
 

@@ -14,7 +14,7 @@ type KNumberConfig = {
 
 const FunctionByFormat = (format: KNumberFormat) =>
   ({
-    korean_only: (
+    ['korean-only']: (
       number: NumberString,
       index: number,
       array: NumberString[]
@@ -36,7 +36,7 @@ const FunctionByFormat = (format: KNumberFormat) =>
         return '';
       }
     },
-    korean_and_number: (
+    ['unit-only']: (
       number: NumberString,
       index: number,
       array: NumberString[]
@@ -62,7 +62,7 @@ export const kNumber = (number: number, config?: KNumberConfig): string => {
   const numberArray = number.toString().split('').reverse() as NumberString[];
 
   return numberArray
-    .map(FunctionByFormat(config?.format ?? 'korean_only'))
+    .map(FunctionByFormat(config?.format ?? 'korean-only'))
     .reverse()
     .join('');
 };

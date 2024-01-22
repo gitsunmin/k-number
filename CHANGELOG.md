@@ -1,9 +1,12 @@
+## [0.0.4]
+- change format name (korean_only -> korean-only, korean_and_number -> unit-only)
+
 ## [0.0.3]
 - export MAX_NUMBER
 - export utils (isInteger)
 - export types
 - export constants
-- feature: apply format (korean-only, korean_and_number)
+- feature: apply format (korean_only, korean_and_number)
 
 ## [0.0.2]
 - fix error: Fixing issues that cannot be imported

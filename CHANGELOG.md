@@ -1,7 +1,9 @@
 ## [0.0.3]
-- provide MAX_NUMBER
-- provide utils (isInteger)
-- provide types
+- export MAX_NUMBER
+- export utils (isInteger)
+- export types
+- export constants
+- feature: apply format (korean-only, korean_and_number)
 
 ## [0.0.2]
 - fix error: Fixing issues that cannot be imported

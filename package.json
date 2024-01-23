@@ -1,6 +1,6 @@
 {
   "name": "@gitsunmin/k-number",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "It is a library that provides a function that returns the number in Korean by entering the number.",
   "private": false,
   "main": "dist/cjs/index.js",

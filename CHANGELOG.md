@@ -1,3 +1,7 @@
+## [0.0.5]
+- support minus number
+- Error if invalid
+
 ## [0.0.4]
 - change format name (korean_only -> korean-only, korean_and_number -> unit-only)
 

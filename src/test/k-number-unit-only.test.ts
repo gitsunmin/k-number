@@ -1,6 +1,6 @@
 import { kNumber } from '../k-number/index';
 
-describe('k-number', () => {
+describe('k-number unit only format', () => {
   test('30_000_400.12 -> 3천만4백', () => {
     expect(kNumber(30_000_400, { format: 'unit-only' })).toBe(
       '3천만4백'

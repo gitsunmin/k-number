@@ -1,6 +1,6 @@
 import { kNumber } from '../k-number/index';
 
-describe('k-number', () => {
+describe('k-number korean-only format', () => {
   test('30_000_400 -> 삼천만사백', () => {
     expect(kNumber(30_000_400)).toBe('삼천만사백');
   });

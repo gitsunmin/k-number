@@ -1,4 +1,4 @@
-import { ES, KoreanUnit, NumberAndKoreanRecord } from 'types';
+import { ES, KoreanUnit, NumberAndKoreanRecord } from '../types';
 
 export const STRING_NUMBERS = [
   '-',

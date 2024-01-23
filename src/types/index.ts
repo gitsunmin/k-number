@@ -3,7 +3,7 @@ import {
   KOREAN_UNITS,
   K_NUMBER_FORMAT,
   STRING_NUMBERS,
-} from 'constants';
+} from '../constants';
 
 export type NumberString = (typeof STRING_NUMBERS)[number];
 

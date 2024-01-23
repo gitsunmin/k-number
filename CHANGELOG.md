@@ -1,3 +1,9 @@
+## [0.0.7]
+- fix import path error
+
+## [0.0.6]
+- update README.md
+
 ## [0.0.5]
 - support minus number
 - Error if invalid

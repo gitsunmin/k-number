@@ -5,6 +5,10 @@ describe('k-number korean-only format', () => {
     expect(kNumber(30_000_400)).toBe('삼천만사백');
   });
 
+  test('0 -> ""', () => {
+    expect(kNumber(0)).toBe('');
+  });
+
   test('12_389_828 -> 일천이백삼십팔만구천팔백이십팔', () => {
     expect(kNumber(12_389_828)).toBe('일천이백삼십팔만구천팔백이십팔');
   });

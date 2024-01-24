@@ -9,6 +9,9 @@ describe('k-number unit only format', () => {
       '1천2백3십8만9천8백2십8'
     );
   });
+  test('0 -> ""', () => {
+    expect(kNumber(0, { format: 'unit-only' })).toBe('');
+  });
   test('3_000 -> 3천', () => {
     expect(kNumber(3_000, { format: 'unit-only' })).toBe('3천');
   });

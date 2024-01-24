@@ -1,7 +1,6 @@
 import { ES, KoreanUnit, NumberAndKoreanRecord } from '../types';
 
 export const STRING_NUMBERS = [
-  '-',
   '0',
   '1',
   '2',
@@ -15,7 +14,6 @@ export const STRING_NUMBERS = [
 ] as const;
 
 export const KOREAN_NUMBERS = [
-  '-',
   '일',
   '이',
   '삼',
@@ -36,7 +34,6 @@ export const MAX_NUMBER = 9_007_199_254_740_991;
 export const MIN_NUMBER = -9_007_199_254_740_991;
 
 export const NUMBER_AND_KOREAN_RECORD: NumberAndKoreanRecord = {
-  '-': '-',
   '0': '',
   '1': '일',
   '2': '이',

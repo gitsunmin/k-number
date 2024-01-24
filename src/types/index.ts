@@ -18,7 +18,8 @@ export type NumberAndKoreanRecord = Record<
   KoreanNumberString | ''
 >;
 
-/**
- * * Empty String
- */
+/** Empty String */
 export type ES<T> = '' | T;
+
+/** Minus String */
+export type MS<T> = '-' | T;

@@ -5,6 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "declaration": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "inlineSourceMap": false,
     "listEmittedFiles": false,

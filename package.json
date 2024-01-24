@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
     "deploy": "pnpm build && npm publish --access public",
-    "deploy:pre": "npm public --dry-run",
+    "deploy:pre": "npm publish --dry-run",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },

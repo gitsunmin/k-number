@@ -1,4 +1,4 @@
-import { ES, KoreanUnit, NumberAndKoreanRecord } from '../types';
+import { KoreanUnit, NumberAndKoreanRecord } from '../types';
 
 export const STRING_NUMBERS = [
   '0',
@@ -34,7 +34,6 @@ export const MAX_NUMBER = 9_007_199_254_740_991;
 export const MIN_NUMBER = -9_007_199_254_740_991;
 
 export const NUMBER_AND_KOREAN_RECORD: NumberAndKoreanRecord = {
-  '0': '',
   '1': '일',
   '2': '이',
   '3': '삼',
@@ -46,12 +45,6 @@ export const NUMBER_AND_KOREAN_RECORD: NumberAndKoreanRecord = {
   '9': '구',
 };
 
-export const UNIT_IN_OTHERS_RANGE: ES<KoreanUnit>[] = [
-  '',
-  '만',
-  '억',
-  '조',
-  '경',
-];
+export const BIG_UNITS: KoreanUnit[] = ['만', '억', '조', '경'];
 
-export const UNIT_IN_SAME_RANGE: ES<KoreanUnit>[] = ['', '십', '백', '천'];
+export const SMALL_UNITS: KoreanUnit[] = ['십', '백', '천'];

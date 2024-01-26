@@ -1,21 +1,25 @@
-import type { KNumberFormat, MS, NumberString } from '../types';
 import {
+  BIG_UNITS,
   MAX_NUMBER,
   MIN_NUMBER,
   NUMBER_AND_KOREAN_RECORD,
-  UNIT_IN_OTHERS_RANGE,
-  UNIT_IN_SAME_RANGE,
+  SMALL_UNITS,
 } from '../constants';
+import type { KNumberFormat, MS, NumberString } from '../types';
 
 import { ErrorCollection } from '../errors';
 import { isInteger } from '../utils';
+
+const LooseBigUnits = ['', ...BIG_UNITS] as const;
+
+const LooseSmallUnits = ['', ...SMALL_UNITS] as const;
 
 type KNumberConfig = {
   format?: KNumberFormat;
 };
 
 const getUnit = (index: number, array: NumberString[]) => {
-  const unit = isInteger(index / 4) ? UNIT_IN_OTHERS_RANGE[index / 4] : '';
+  const unit = isInteger(index / 4) ? LooseBigUnits[index / 4] : '';
   const isNotZero = array.slice(index, index + 4).join('') !== '0000';
   return unit && isNotZero ? unit : '';
 };
@@ -28,7 +32,7 @@ const formatKorean = (
   const unit = getUnit(index, array);
   if (input === '-') return input;
   return input !== '0'
-    ? NUMBER_AND_KOREAN_RECORD[input] + UNIT_IN_SAME_RANGE[index % 4] + unit
+    ? NUMBER_AND_KOREAN_RECORD[input] + LooseSmallUnits[index % 4] + unit
     : unit;
 };
 
@@ -39,7 +43,7 @@ const formatUnitOnly = (
 ) => {
   const unit = getUnit(index, array);
   if (input === '-') return input;
-  return input !== '0' ? input + UNIT_IN_SAME_RANGE[index % 4] + unit : unit;
+  return input !== '0' ? input + LooseSmallUnits[index % 4] + unit : unit;
 };
 
 const functionByFormat = (format: KNumberFormat) => {

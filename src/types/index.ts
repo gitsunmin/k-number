@@ -7,6 +7,8 @@ import {
 
 export type NumberString = (typeof STRING_NUMBERS)[number];
 
+export type NonZeroNumberString = Exclude<NumberString, '0'>;
+
 export type KoreanNumberString = (typeof KOREAN_NUMBERS)[number];
 
 export type KoreanUnit = (typeof KOREAN_UNITS)[number];
@@ -14,12 +16,9 @@ export type KoreanUnit = (typeof KOREAN_UNITS)[number];
 export type KNumberFormat = (typeof K_NUMBER_FORMAT)[number];
 
 export type NumberAndKoreanRecord = Record<
-  NumberString,
-  KoreanNumberString | ''
+  NonZeroNumberString,
+  KoreanNumberString
 >;
-
-/** Empty String */
-export type ES<T> = '' | T;
 
 /** Minus String */
 export type MS<T> = '-' | T;

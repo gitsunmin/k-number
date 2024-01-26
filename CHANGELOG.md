@@ -1,3 +1,7 @@
+# [0.1.0]
+- remove EM type
+- supply KNumberConfig
+
 ## [0.0.8]
 - refactor: Refactoring to improve code readability
 - updae README.md

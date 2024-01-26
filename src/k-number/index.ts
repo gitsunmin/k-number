@@ -5,7 +5,7 @@ import {
   NUMBER_AND_KOREAN_RECORD,
   SMALL_UNITS,
 } from '../constants';
-import type { KNumberFormat, MS, NumberString } from '../types';
+import type { KNumberConfig, KNumberFormat, MS, NumberString } from '../types';
 
 import { ErrorCollection } from '../errors';
 import { isInteger } from '../utils';
@@ -13,10 +13,6 @@ import { isInteger } from '../utils';
 const LooseBigUnits = ['', ...BIG_UNITS] as const;
 
 const LooseSmallUnits = ['', ...SMALL_UNITS] as const;
-
-type KNumberConfig = {
-  format?: KNumberFormat;
-};
 
 const getUnit = (index: number, array: NumberString[]) => {
   const unit = isInteger(index / 4) ? LooseBigUnits[index / 4] : '';

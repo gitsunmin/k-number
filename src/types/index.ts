@@ -20,5 +20,9 @@ export type NumberAndKoreanRecord = Record<
   KoreanNumberString
 >;
 
+export type KNumberConfig = {
+  format?: KNumberFormat;
+};
+
 /** Minus String */
 export type MS<T> = '-' | T;

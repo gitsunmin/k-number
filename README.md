@@ -1,14 +1,14 @@
 ## k-number
 
-숫자를 입력하면 한글 수사로 반환하는 기능을 제공하는 라이브러리입니다.
+숫자를 입력하면 한글 수사로 반환하는 기능을 제공하는 라이브러리입니다. 예를들면, `10000`을 입력하면 `만`으로 반환합니다.
 
-## 설치 :package:
+## 설치
 
 ```bash
 npm install @gitsunmin/k-number
 ```
 
-## 사용법 :book:
+## 사용법
 
 ```ts
 import { kNumber } from '@gitsunmin/k-number';
@@ -22,14 +22,14 @@ console.log('unitOnlyResult:', unitOnlyResult);
 // unitOnlyResult: 3천9백3십9만3천3백8십2
 ```
 
-### 주의사항 :warning:
+## 주의사항
 - 소수점 입력을 지원하지 않습니다. [integer only]
 - 최대값 9_007_199_254_740_991까지만 입력이 가능합니다. 
 - 최소값 -9_007_199_254_740_991까지만 입력이 가능합니다. 
 
-## 상세 :mag:
+## 함수 설명
 
-### Parameter :page_facing_up:
+### kNumber input
 - Number
   - type: number (integer only)
   - example:
@@ -48,14 +48,18 @@ console.log('unitOnlyResult:', unitOnlyResult);
     kNumber(123_123, { format: 'unit-only' })
     ```
 
-### Type :label:
-라이브러리에서 사용중인 타입을 제공합니다. > [type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)
+### kNumber output
+- type: string
+- example:
+  ```ts
+  ckNumber(123_123, { format: 'unit-only' })
+  // 삼십만천백이십삼
+  ```
 
-### Constant :bulb:
-라이브러리에서 사용중인 상수를 제공합니다. > [constants.ts](https://github.com/gitsunmin/k-number/blob/master/src/constants/index.ts)
-
-### Errors :warning:
-라이브러리에서 사용중인 Error를 제공합니다. > [errors.ts](https://github.com/gitsunmin/k-number/blob/master/src/errors/index.ts)
+## 제공
+[type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)
+[constants.ts](https://github.com/gitsunmin/k-number/blob/master/src/constants/index.ts)
+[errors.ts](https://github.com/gitsunmin/k-number/blob/master/src/errors/index.ts)
 
 ## 라이선스 :scroll:
 

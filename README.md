@@ -56,9 +56,9 @@ console.log('unitOnlyResult:', unitOnlyResult);
   ```
 
 ## Types & Constants
-[type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)
-[constants.ts](https://github.com/gitsunmin/k-number/blob/master/src/constants/index.ts)
-[errors.ts](https://github.com/gitsunmin/k-number/blob/master/src/errors/index.ts)
+- [type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)
+- [constants.ts](https://github.com/gitsunmin/k-number/blob/master/src/constants/index.ts)
+- [errors.ts](https://github.com/gitsunmin/k-number/blob/master/src/errors/index.ts)
 
 ## License
 

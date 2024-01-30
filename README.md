@@ -2,13 +2,13 @@
 
 숫자를 입력하면 한글 수사로 반환하는 기능을 제공하는 라이브러리입니다. 예를들면, `10000`을 입력하면 `만`으로 반환합니다.
 
-## 설치
+## Install
 
 ```bash
 npm install @gitsunmin/k-number
 ```
 
-## 사용법
+## Usage
 
 ```ts
 import { kNumber } from '@gitsunmin/k-number';
@@ -22,14 +22,13 @@ console.log('unitOnlyResult:', unitOnlyResult);
 // unitOnlyResult: 3천9백3십9만3천3백8십2
 ```
 
-## 주의사항
-- 소수점 입력을 지원하지 않습니다. [integer only]
-- 최대값 9_007_199_254_740_991까지만 입력이 가능합니다. 
-- 최소값 -9_007_199_254_740_991까지만 입력이 가능합니다. 
+- :warning: 소수점 입력을 지원하지 않습니다. [integer only]
+- :warning: 최대값 9_007_199_254_740_991까지만 입력이 가능합니다. 
+- :warning: 최소값 -9_007_199_254_740_991까지만 입력이 가능합니다. 
 
-## 함수 설명
+## KNumber
 
-### kNumber input
+### input
 - Number
   - type: number (integer only)
   - example:
@@ -48,7 +47,7 @@ console.log('unitOnlyResult:', unitOnlyResult);
     kNumber(123_123, { format: 'unit-only' })
     ```
 
-### kNumber output
+### output
 - type: string
 - example:
   ```ts
@@ -56,11 +55,11 @@ console.log('unitOnlyResult:', unitOnlyResult);
   // 삼십만천백이십삼
   ```
 
-## 제공
+## Types & Constants
 [type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)
 [constants.ts](https://github.com/gitsunmin/k-number/blob/master/src/constants/index.ts)
 [errors.ts](https://github.com/gitsunmin/k-number/blob/master/src/errors/index.ts)
 
-## 라이선스 :scroll:
+## License
 
 [MIT](./LICENSE)

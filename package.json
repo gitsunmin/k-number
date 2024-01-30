@@ -1,7 +1,7 @@
 {
   "name": "@gitsunmin/k-number",
-  "version": "0.1.1",
-  "description": "숫자를 입력하면 한글 수사를 반환하는 기능을 제공하는 라이브러리입니다. (ex. 1234 -> 천이백삼십사)",
+  "version": "0.1.2",
+  "description": "숫자를 입력하면 한글 수사를 반환하는 기능을 제공하는 라이브러리입니다. (ex. 1234 -> 천이백삼십",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

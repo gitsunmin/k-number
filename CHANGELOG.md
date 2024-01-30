@@ -1,3 +1,7 @@
+# [0.1.2]
+- update README.md
+- update npm keywords
+
 # [0.1.1]
 - update README.md
 - apply husky

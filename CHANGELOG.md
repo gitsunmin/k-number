@@ -1,3 +1,7 @@
+# [0.1.1]
+- update README.md
+- apply husky
+
 # [0.1.0]
 - remove EM type
 - supply KNumberConfig

@@ -51,8 +51,8 @@ console.log('unitOnlyResult:', unitOnlyResult);
 - type: string
 - example:
   ```ts
-  ckNumber(123_123, { format: 'unit-only' })
-  // 삼십만천백이십삼
+  const koreanNumber = kNumber(123_123, { format: 'unit-only' });
+  console.log(koreanNumber); // 1십2만3천1백2십3
   ```
 
 ## Types & Constants

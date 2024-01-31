@@ -1,3 +1,7 @@
+# [0.1.4]
+- fix typos in README
+- Refactor kNumber function error handling
+
 # [0.1.3]
 - update keywords
 

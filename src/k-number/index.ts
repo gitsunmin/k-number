@@ -54,10 +54,10 @@ const functionByFormat = (format: KNumberFormat) => {
 };
 
 export const kNumber = (input: number, config?: KNumberConfig): string => {
-  if (input > MAX_NUMBER) throw ErrorCollection.OVER_MAX_NUMBER;
-  if (input < MIN_NUMBER) throw ErrorCollection.UNDER_MIN_NUMBER;
   if (typeof input !== 'number') throw ErrorCollection.NOT_NUMBER;
   if (!isInteger(input)) throw ErrorCollection.NOT_INTEGER;
+  if (input > MAX_NUMBER) throw ErrorCollection.OVER_MAX_NUMBER;
+  if (input < MIN_NUMBER) throw ErrorCollection.UNDER_MIN_NUMBER;
 
   const numberArray = input.toString().split('').reverse() as NumberString[];
 

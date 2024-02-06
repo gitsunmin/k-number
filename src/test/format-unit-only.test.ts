@@ -1,6 +1,6 @@
 import { kNumber } from '../k-number/index';
 
-describe('k-number unit only format', () => {
+describe('k-number unit only format (positive)', () => {
   test('30_000_400 -> 3천만4백', () => {
     expect(kNumber(30_000_400, { format: 'unit-only' })).toBe('3천만4백');
   });
@@ -44,7 +44,9 @@ describe('k-number unit only format', () => {
       '9천7조1천9백9십2억5천4백7십4만9백9십1'
     );
   });
-  // ----------------------------------------
+});
+
+describe('k-number unit only format (negative)', () => {
   test('-30_000_400 -> -3천만4백', () => {
     expect(kNumber(-30_000_400, { format: 'unit-only' })).toBe('-3천만4백');
   });

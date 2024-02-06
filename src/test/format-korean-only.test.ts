@@ -1,6 +1,6 @@
 import { kNumber } from '../k-number/index';
 
-describe('k-number korean-only format', () => {
+describe('[format] => korean-only (positive)', () => {
   test('30_000_400 -> 삼천만사백', () => {
     expect(kNumber(30_000_400)).toBe('삼천만사백');
   });
@@ -52,9 +52,9 @@ describe('k-number korean-only format', () => {
   test('900_000_000_001 -> 구천억일', () => {
     expect(kNumber(900_000_000_001)).toBe('구천억일');
   });
+});
 
-  // ----------------------------------------
-
+describe('[format] => korean-only (negative)', () => {
   test('-30_000_400 -> -삼천만사백', () => {
     expect(kNumber(-30_000_400)).toBe('-삼천만사백');
   });

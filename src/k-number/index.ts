@@ -4,11 +4,11 @@ import {
   MIN_NUMBER,
   NUMBER_AND_KOREAN_RECORD,
   SMALL_UNITS,
-} from '../constants';
-import type { KNumberConfig, KNumberFormat, MS, NumberString } from '../types';
+} from '@/constants';
+import type { KNumberConfig, KNumberFormat, MS, NumberString } from '@/types';
 
-import { ErrorCollection } from '../errors';
-import { isInteger } from '../utils';
+import { ErrorCollection } from '@/errors';
+import { isInteger } from '@/utils';
 
 const LooseBigUnits = ['', ...BIG_UNITS] as const;
 

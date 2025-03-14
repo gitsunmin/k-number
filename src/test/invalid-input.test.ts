@@ -1,7 +1,7 @@
-import { MAX_NUMBER, MIN_NUMBER } from '../constants';
+import { MAX_NUMBER, MIN_NUMBER } from '@/constants';
 
-import { ErrorCollection } from '../errors';
-import { kNumber } from '../k-number/index';
+import { ErrorCollection } from '@/errors';
+import { kNumber } from '@/k-number/index';
 
 describe('invalid input', () => {
   test('소수점이 포함된 숫자', () => {

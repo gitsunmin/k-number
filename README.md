@@ -6,6 +6,10 @@
 
 ```bash
 npm install @gitsunmin/k-number
+
+pnpm add @gitsunmin/k-number
+
+bun add @gitsunmin/k-number
 ```
 
 ## Usage
@@ -54,6 +58,21 @@ console.log('unitOnlyResult:', unitOnlyResult);
   const koreanNumber = kNumber(123_123, { format: 'unit-only' });
   console.log(koreanNumber); // 1십2만3천1백2십3
   ```
+
+### Error
+
+```ts
+kNumber(3.14) // => 'number is not integer' as ErrorCollection.NOT_INTEGER
+
+kNumber(1234, { format: 'english-only' }) // => 'invalid format' as ErrorCollection.INVALID_FORMAT
+
+kNumber(9_007_199_254_740_992) // => 'number is too big' as ErrorCollection.OVER_MAX_NUMBER
+
+kNumber(-9_007_199_254_740_992) // => 'number is too small' as ErrorCollection.UNDER_MIN_NUMBER
+
+kNumber('동해물과백두산이말라버렸다.') // => 'input is not number' as ErrorCollection.NOT_NUMBER
+
+```
 
 ## Types & Constants
 - [type.ts](https://github.com/gitsunmin/k-number/blob/master/src/types/index.ts)

@@ -48,3 +48,5 @@ export const NUMBER_AND_KOREAN_RECORD: NumberAndKoreanRecord = {
 export const BIG_UNITS: KoreanUnit[] = ['만', '억', '조', '경'];
 
 export const SMALL_UNITS: KoreanUnit[] = ['십', '백', '천'];
+
+export const LOG_PREFIX = '[@gitsunmin/k-number] >';

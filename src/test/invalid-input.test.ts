@@ -50,4 +50,28 @@ describe('invalid input', () => {
     // @ts-expect-error
     expect(kNumber('동해물과백두산이말라버렸다.', { onError: () => customError })).toBe(customError);
   });
+
+  test('custom error for 지원하지 않는 포맷', () => {
+    const customError = 'custom error';
+
+    expect(kNumber(1234, {
+      // @ts-expect-error
+      format: 'english-only', onError: () => customError
+    })).toBe(
+      customError
+    );
+  });
+
+  test('custom error for 숫자가 아닌 값을 입력받은 경우', () => {
+    const customError = '숫자가 아닙니다.';
+    expect(kNumber(3.14, {
+      // @ts-expect-error
+      onError: (error) => {
+        if (error === ErrorCollection.NOT_INTEGER) return customError;
+      }
+    })).toBe(
+      customError
+    );
+  });
+
 });

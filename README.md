@@ -74,6 +74,10 @@ kNumber(-9_007_199_254_740_992) // => 'number is too small' as ErrorCollection.U
 
 kNumber('동해물과백두산이말라버렸다.') // => 'input is not number' as ErrorCollection.NOT_NUMBER
 
+// Custom Error Handling
+kNumber(3.14, { onError: (error) => {
+  if (error === ErrorCollection.NOT_INTEGER) return '숫자가 아닙니다.';
+} }) // => '숫자가 아닙니다.'
 ```
 
 ## Types & Constants

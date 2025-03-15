@@ -1,4 +1,4 @@
-## k-number
+# @gitsunmin/k-number 🇰🇷
 
 숫자를 입력하면 한글 수사로 반환하는 기능을 제공하는 라이브러리입니다. 예를들면, `10000`을 입력하면 `만`으로 반환합니다.
 
@@ -6,6 +6,8 @@
 
 ```bash
 npm install @gitsunmin/k-number
+
+yarn add @gitsunmin/k-number
 
 pnpm add @gitsunmin/k-number
 

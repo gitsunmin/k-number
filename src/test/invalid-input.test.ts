@@ -33,4 +33,21 @@ describe('invalid input', () => {
       ErrorCollection.UNDER_MIN_NUMBER)
       ;
   });
+
+  test('입력이 없는 경우', () => {
+    // @ts-expect-error
+    expect(kNumber(undefined)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('입력이 null 인 경우', () => {
+    // @ts-expect-error
+    expect(kNumber(null)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('custom error', () => {
+    const customError = 'custom error';
+
+    // @ts-expect-error
+    expect(kNumber('동해물과백두산이말라버렸다.', { onError: () => customError })).toBe(customError);
+  });
 });

@@ -4,6 +4,7 @@ import {
   K_NUMBER_FORMAT,
   STRING_NUMBERS,
 } from '@/constants';
+import { ErrorCollectionValue } from '@/errors';
 
 export type NumberString = (typeof STRING_NUMBERS)[number];
 
@@ -22,6 +23,7 @@ export type NumberAndKoreanRecord = Record<
 
 export type KNumberConfig = {
   format?: KNumberFormat;
+  onError?: (error: ErrorCollectionValue) => string;
 };
 
 /** Minus String */

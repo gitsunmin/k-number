@@ -8,7 +8,7 @@ import {
 } from '@/constants';
 import type { KNumberConfig, KNumberFormat, MS, NumberString } from '@/types';
 
-import { ErrorCollection } from '@/errors';
+import { ErrorCollection, ErrorCollectionValue } from '@/errors';
 import { isInteger } from '@/utils';
 
 const LooseBigUnits = ['', ...BIG_UNITS] as const;
@@ -50,8 +50,19 @@ const functionByFormat = (format: KNumberFormat) => {
   if (format === 'unit-only') return formatUnitOnly;
 };
 
-const safe = (input: number, config?: KNumberConfig): string | number => {
-  const valid = (input: number, config?: KNumberConfig) => {
+type ValidResult = {
+  _tag: 'Valid';
+  value: number;
+};
+
+type InvalidResult = {
+  _tag: 'Invalid';
+  value: ErrorCollectionValue;
+};
+
+
+const safe = (input: number, config?: KNumberConfig): ValidResult | InvalidResult => {
+  const invalid = (input: number, config?: KNumberConfig) => {
     if (typeof input !== 'number') return ErrorCollection.NOT_NUMBER;
     if (!isInteger(input)) return ErrorCollection.NOT_INTEGER;
     if (input > MAX_NUMBER) return ErrorCollection.OVER_MAX_NUMBER;
@@ -62,23 +73,32 @@ const safe = (input: number, config?: KNumberConfig): string | number => {
     return null;
   }
 
-  const error = valid(input, config);
+  const error = invalid(input, config);
 
-  if (error !== null) {
-    console.error(`${LOG_PREFIX} ${error}`);
-    return error;
+  if (error === null) {
+    return {
+      _tag: 'Valid',
+      value: input,
+    }
+  } else {
+    return {
+      _tag: 'Invalid',
+      value: error,
+    }
   }
-
-  return input;
 }
 
-export const kNumber = (input: number, config?: KNumberConfig): string => {
+export const kNumber = (input: number, config: KNumberConfig = { format: 'korean-only', onError: (error) => error }): string => {
+  const { format = 'korean-only', onError = (error) => error } = config;
+
   try {
     const safedInput = safe(input, config);
-    const formatFunction = functionByFormat(config?.format ?? 'korean-only') || ((value) => value);
-    if (typeof safedInput === 'string') return safedInput;
 
-    const numberArray = safedInput.toString().split('').reverse() as NumberString[];
+    if (safedInput._tag === 'Invalid') return onError(safedInput.value);
+
+    const formatFunction = functionByFormat(format) || ((value) => value);
+
+    const numberArray = safedInput.value.toString().split('').reverse() as NumberString[];
 
     return numberArray
       .map(formatFunction)
@@ -86,7 +106,8 @@ export const kNumber = (input: number, config?: KNumberConfig): string => {
       .join('');
 
   } catch (error) {
-    console.error(`${LOG_PREFIX} ${error}`);
-    return '';
+    console.error(`${LOG_PREFIX} ${ErrorCollection.UNKNOWN_ERROR} ${error}`);
+
+    return onError(ErrorCollection.UNKNOWN_ERROR);
   }
 };

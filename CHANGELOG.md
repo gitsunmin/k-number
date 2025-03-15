@@ -1,3 +1,13 @@
+<!-- https://keepachangelog.com/ko/1.0.0/ -->
+
+# [0.2.0]
+### Changed
+- Changed to return string instead of Throw when error occurs
+- Updated Dependency (jest, typescript, ts-jest, node)
+
+### Added
+- Added onError config
+
 # [0.1.4]
 - fix typos in README
 - Refactor kNumber function error handling

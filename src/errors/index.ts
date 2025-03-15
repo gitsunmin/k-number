@@ -1,7 +1,11 @@
+
 export const ErrorCollection = {
-  INVALID_FORMAT: new Error('[k-number]: invalid format'),
-  OVER_MAX_NUMBER: new Error('[k-number]: number is too big'),
-  UNDER_MIN_NUMBER: new Error('[k-number]: number is too small'),
-  NOT_NUMBER: new Error('[k-number]: input is not number'),
-  NOT_INTEGER: new Error('[k-number]: number is not integer'),
+  INVALID_FORMAT: 'invalid format' as const,
+  OVER_MAX_NUMBER: 'number is too big' as const,
+  UNDER_MIN_NUMBER: 'number is too small' as const,
+  NOT_NUMBER: 'input is not number' as const,
+  NOT_INTEGER: 'number is not integer' as const,
+  UNKNOWN_ERROR: 'unknown error' as const,
 };
+
+export type ErrorCollectionValue = typeof ErrorCollection[keyof typeof ErrorCollection];

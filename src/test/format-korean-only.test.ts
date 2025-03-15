@@ -1,4 +1,4 @@
-import { kNumber } from '../k-number/index';
+import { kNumber } from '@/k-number/index';
 
 describe('[format] => korean-only (positive)', () => {
   test('30_000_400 -> 삼천만사백', () => {

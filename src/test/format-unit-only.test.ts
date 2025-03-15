@@ -1,4 +1,4 @@
-import { kNumber } from '../k-number/index';
+import { kNumber } from '@/k-number/index';
 
 describe('k-number unit only format (positive)', () => {
   test('30_000_400 -> 3천만4백', () => {

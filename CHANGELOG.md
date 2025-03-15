@@ -1,4 +1,11 @@
 <!-- https://keepachangelog.com/ko/1.0.0/ -->
+# [0.2.1]
+### Changed
+- Changed README.md
+
+### Added
+- Added test cases
+
 
 # [0.2.0]
 ### Changed

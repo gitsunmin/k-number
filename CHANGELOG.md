@@ -1,4 +1,19 @@
 <!-- https://keepachangelog.com/ko/1.0.0/ -->
+# [0.2.3]
+### Fixed
+- Fixed critical import path alias issue that caused module resolution errors in production
+  - Changed TypeScript path aliases (`@/*`) to relative paths in build output
+  - Added `tsc-alias` to automatically resolve path aliases during build process
+- Optimized published package size
+  - Excluded test files from npm package (reduced from 7.3kB to 5.3kB)
+  - Improved `files` configuration in package.json
+- Enhanced `.npmignore` to exclude unnecessary files from package
+- Fixed repository URL format to follow npm conventions (`git+https://`)
+
+### Changed
+- Updated build script to use `tsc-alias` for path alias resolution
+- Maintained development convenience by keeping `@/*` aliases in source code
+
 # [0.2.2]
 ### Fixed
 - Fixed module resolution issue by adding `exports` field in package.json

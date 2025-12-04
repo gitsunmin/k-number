@@ -1,11 +1,23 @@
 {
   "name": "@gitsunmin/k-number",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "숫자를 입력하면 한글 수사를 반환하는 기능을 제공하는 라이브러리입니다. (ex. 1234 -> 천이백삼십",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "author": "gitsunmin <tjsals116@gmail.com>",
   "files": [
     "dist/**/*"
@@ -37,10 +49,10 @@
     "url": "https://github.com/gitsunmin/k-number/issues"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.6",
-    "typescript": "^5.8.2"
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
   }
 }

@@ -1,0 +1,19 @@
+# Source files
+src/
+*.test.ts
+*.spec.ts
+
+# Configuration files
+tsconfig*.json
+jest.config.js
+.nvmrc
+.gitignore
+
+# Development
+.vscode/
+.husky/
+node_modules/
+
+# Others
+*.log
+.DS_Store

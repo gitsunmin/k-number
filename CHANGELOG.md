@@ -1,4 +1,16 @@
 <!-- https://keepachangelog.com/ko/1.0.0/ -->
+# [0.3.0]
+### Added
+- Added new `'mixed'` format option for cleaner number representation
+  - Only displays major units (만, 억, 조, 경) in Korean, rest in numbers
+  - Example: `100,000` → `10만` (instead of `1십만`)
+  - Example: `123,456` → `12만3456`
+  - Example: `1,234,567,890` → `12억3456만7890`
+- Added 27 comprehensive test cases for the new mixed format
+
+### Changed
+- Updated README with `mixed` format usage examples and documentation
+
 # [0.2.3]
 ### Fixed
 - Fixed critical import path alias issue that caused module resolution errors in production

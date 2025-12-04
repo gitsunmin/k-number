@@ -26,6 +26,10 @@ console.log('result:', result);
 const unitOnlyResult = kNumber(39_393_382, { format: 'unit-only' });
 console.log('unitOnlyResult:', unitOnlyResult);
 // unitOnlyResult: 3천9백3십9만3천3백8십2
+
+const mixedResult = kNumber(100_000, { format: 'mixed' });
+console.log('mixedResult:', mixedResult);
+// mixedResult: 10만
 ```
 
 - :warning: 소수점 입력을 지원하지 않습니다. [integer only]
@@ -45,12 +49,17 @@ console.log('unitOnlyResult:', unitOnlyResult);
   - type: KNumberConfig
     ```ts
     {
-      format?: 'korean-only' | 'unit-only';
+      format?: 'korean-only' | 'unit-only' | 'mixed';
     }
     ``` 
+  - format options:
+    - `korean-only`: 모든 숫자를 한글로 변환 (예: `123456` → `십이만삼천사백오십육`)
+    - `unit-only`: 숫자는 그대로, 단위만 한글 (예: `123456` → `12만3천4백5십6`)
+    - `mixed`: 큰 단위(만, 억, 조, 경)만 한글, 나머지는 숫자 (예: `123456` → `12만3456`)
   - example: 
     ```ts
     kNumber(123_123, { format: 'unit-only' })
+    kNumber(100_000, { format: 'mixed' }) // => '10만'
     ```
 
 ### output

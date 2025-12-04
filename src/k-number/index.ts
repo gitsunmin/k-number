@@ -45,9 +45,44 @@ const formatUnitOnly = (
   return input !== '0' ? input + LooseSmallUnits[index % 4] + unit : unit;
 };
 
+const formatMixedNumber = (num: number): string => {
+  if (num === 0) return '';
+
+  const isNegative = num < 0;
+  const absNum = Math.abs(num);
+  const str = absNum.toString();
+  const len = str.length;
+
+  let result = '';
+  let groupIndex = 0;
+
+  // 4자리씩 그룹으로 나누기 (역순)
+  for (let i = len; i > 0; i -= 4) {
+    const start = Math.max(0, i - 4);
+    const group = str.substring(start, i);
+    const groupNum = parseInt(group, 10);
+
+    if (groupNum > 0) {
+      const bigUnit = LooseBigUnits[groupIndex];
+      if (bigUnit) {
+        // 큰 단위가 있으면 숫자 + 단위
+        result = groupNum + bigUnit + result;
+      } else {
+        // 천 이하는 숫자만
+        result = groupNum + result;
+      }
+    }
+
+    groupIndex++;
+  }
+
+  return isNegative ? '-' + result : result;
+};
+
 const functionByFormat = (format: KNumberFormat) => {
   if (format === 'korean-only') return formatKorean;
   if (format === 'unit-only') return formatUnitOnly;
+  if (format === 'mixed') return '';
 };
 
 type ValidResult = {
@@ -67,7 +102,7 @@ const safe = (input: number, config?: KNumberConfig): ValidResult | InvalidResul
     if (!isInteger(input)) return ErrorCollection.NOT_INTEGER;
     if (input > MAX_NUMBER) return ErrorCollection.OVER_MAX_NUMBER;
     if (input < MIN_NUMBER) return ErrorCollection.UNDER_MIN_NUMBER;
-    if (config !== undefined && config.format !== undefined && config.format !== 'korean-only' && config.format !== 'unit-only')
+    if (config !== undefined && config.format !== undefined && config.format !== 'korean-only' && config.format !== 'unit-only' && config.format !== 'mixed')
       return ErrorCollection.INVALID_FORMAT;
 
     return null;
@@ -95,6 +130,9 @@ export const kNumber = (input: number, config: KNumberConfig = { format: 'korean
     const safedInput = safe(input, config);
 
     if (safedInput._tag === 'Invalid') return onError(safedInput.value);
+
+    // mixed 포맷은 별도 함수로 처리
+    if (format === 'mixed') return formatMixedNumber(safedInput.value);
 
     const formatFunction = functionByFormat(format) || ((value) => value);
 

@@ -1,4 +1,10 @@
 <!-- https://keepachangelog.com/ko/1.0.0/ -->
+# [0.2.2]
+### Fixed
+- Fixed module resolution issue by adding `exports` field in package.json
+- Added proper support for both ESM (`import`) and CommonJS (`require`)
+- Improved TypeScript type definitions for both module systems
+
 # [0.2.1]
 ### Changed
 - Changed README.md

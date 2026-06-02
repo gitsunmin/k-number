@@ -13,6 +13,7 @@ jest.config.js
 .vscode/
 .husky/
 node_modules/
+coverage/
 
 # Others
 *.log

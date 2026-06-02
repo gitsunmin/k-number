@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "strict": true,
     "traceResolution": false,
-    "types": ["jest"],
+    "types": ["vitest/globals"],
     "paths": {
       "@/*": ["./src/*"]
     }

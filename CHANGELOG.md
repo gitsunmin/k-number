@@ -2,9 +2,7 @@
 
 # Changelog
 
-## [Unreleased]
-
-## [0.3.1] - 2026-06-02
+## [1.0.0] - 2026-06-02
 
 ### Fixed
 
@@ -22,16 +20,19 @@
 
 ### Changed
 
+- 테스트 도구를 Jest에서 Vitest로 교체
+  - `jest`, `ts-jest`, `@types/jest` 제거
+  - `vitest`, `@vitest/coverage-v8` 추가
+  - `jest.config.js` 제거, `vitest.config.ts` 추가
+  - `tsconfig.json`의 `types` 필드를 `["jest"]` → `["vitest/globals"]` 로 변경
 - 의존성 업데이트
-  - `jest` 30.2.0 → 30.4.2
-  - `ts-jest` 29.4.6 → 29.4.11
   - `tsc-alias` 1.8.16 → 1.8.17
   - `typescript` 5.9.3 → **6.0.3** (major)
 - TypeScript 6.0 마이그레이션 (`tsconfig.json`)
   - `target` `ES5` → `ES2020`
   - `moduleResolution` `node` → `bundler` (deprecated 옵션 제거)
   - `baseUrl` 제거, `paths` 를 프로젝트 루트 기준으로 변경 (`@/*` → `./src/*`)
-  - `module: "ESNext"` 및 `types: ["jest"]` 추가
+  - `module: "ESNext"` 추가
   - CJS 빌드(`tsconfig.cjs.json`): `moduleResolution: "node10"` + `ignoreDeprecations: "6.0"` 적용
   - CJS/ESM 빌드 `target` `ES2015` → `ES2020`
 - README 전면 개편
@@ -203,8 +204,8 @@
 
 ---
 
-[Unreleased]: https://github.com/gitsunmin/k-number/compare/v0.3.1...HEAD
-[0.3.1]: https://github.com/gitsunmin/k-number/compare/v0.3.0...v0.3.1
+[Unreleased]: https://github.com/gitsunmin/k-number/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/gitsunmin/k-number/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/gitsunmin/k-number/compare/v0.2.3...v0.3.0
 [0.2.3]: https://github.com/gitsunmin/k-number/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/gitsunmin/k-number/compare/v0.2.1...v0.2.2

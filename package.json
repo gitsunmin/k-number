@@ -32,7 +32,9 @@
     "launch": "bun run build && npm publish --access public",
     "launch:dry-run": "npm publish --dry-run",
     "test": "jest --no-cache",
+    "test:coverage": "jest --coverage --no-cache",
     "test:watch": "jest --watchAll",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "keywords": [
@@ -56,9 +58,9 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "husky": "^9.1.7",
-    "jest": "^30.2.0",
-    "ts-jest": "^29.4.6",
-    "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3"
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "tsc-alias": "^1.8.17",
+    "typescript": "6.0.3"
   }
 }

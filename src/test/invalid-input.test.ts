@@ -74,4 +74,16 @@ describe('invalid input', () => {
     );
   });
 
+  test('NaN 입력', () => {
+    expect(kNumber(NaN)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('Infinity 입력', () => {
+    expect(kNumber(Infinity)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('-Infinity 입력', () => {
+    expect(kNumber(-Infinity)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
 });

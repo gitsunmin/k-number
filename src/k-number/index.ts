@@ -1,12 +1,13 @@
 import {
   BIG_UNITS,
+  K_NUMBER_FORMAT,
   MAX_NUMBER,
   MIN_NUMBER,
   NUMBER_AND_KOREAN_RECORD,
   SMALL_UNITS,
   LOG_PREFIX,
 } from '@/constants';
-import type { KNumberConfig, KNumberFormat, MS, NumberString } from '@/types';
+import type { KNumberConfig, MS, NumberString } from '@/types';
 
 import { ErrorCollection, ErrorCollectionValue } from '@/errors';
 import { isInteger } from '@/utils';
@@ -79,10 +80,9 @@ const formatMixedNumber = (num: number): string => {
   return isNegative ? '-' + result : result;
 };
 
-const functionByFormat = (format: KNumberFormat) => {
+const functionByFormat = (format: 'korean-only' | 'unit-only') => {
   if (format === 'korean-only') return formatKorean;
-  if (format === 'unit-only') return formatUnitOnly;
-  if (format === 'mixed') return '';
+  return formatUnitOnly;
 };
 
 type ValidResult = {
@@ -98,11 +98,11 @@ type InvalidResult = {
 
 const safe = (input: number, config?: KNumberConfig): ValidResult | InvalidResult => {
   const invalid = (input: number, config?: KNumberConfig) => {
-    if (typeof input !== 'number') return ErrorCollection.NOT_NUMBER;
+    if (typeof input !== 'number' || isNaN(input) || !isFinite(input)) return ErrorCollection.NOT_NUMBER;
     if (!isInteger(input)) return ErrorCollection.NOT_INTEGER;
     if (input > MAX_NUMBER) return ErrorCollection.OVER_MAX_NUMBER;
     if (input < MIN_NUMBER) return ErrorCollection.UNDER_MIN_NUMBER;
-    if (config !== undefined && config.format !== undefined && config.format !== 'korean-only' && config.format !== 'unit-only' && config.format !== 'mixed')
+    if (config?.format !== undefined && !(K_NUMBER_FORMAT as readonly string[]).includes(config.format as string))
       return ErrorCollection.INVALID_FORMAT;
 
     return null;
@@ -134,7 +134,7 @@ export const kNumber = (input: number, config: KNumberConfig = { format: 'korean
     // mixed 포맷은 별도 함수로 처리
     if (format === 'mixed') return formatMixedNumber(safedInput.value);
 
-    const formatFunction = functionByFormat(format) || ((value) => value);
+    const formatFunction = functionByFormat(format as 'korean-only' | 'unit-only');
 
     const numberArray = safedInput.value.toString().split('').reverse() as NumberString[];
 

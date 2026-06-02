@@ -3,7 +3,9 @@
   "compilerOptions": {
     "noEmit": false,
     "module": "commonjs",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "outDir": "dist/cjs",
-    "target": "es2015"
+    "target": "ES2020"
   }
 }

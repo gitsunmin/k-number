@@ -54,8 +54,8 @@ describe('invalid input', () => {
   test('custom error for 지원하지 않는 포맷', () => {
     const customError = 'custom error';
 
+    // @ts-expect-error
     expect(kNumber(1234, {
-      // @ts-expect-error
       format: 'english-only', onError: () => customError
     })).toBe(
       customError
@@ -65,13 +65,30 @@ describe('invalid input', () => {
   test('custom error for 숫자가 아닌 값을 입력받은 경우', () => {
     const customError = '숫자가 아닙니다.';
     expect(kNumber(3.14, {
-      // @ts-expect-error
       onError: (error) => {
         if (error === ErrorCollection.NOT_INTEGER) return customError;
       }
     })).toBe(
       customError
     );
+  });
+
+  test('NaN 입력', () => {
+    expect(kNumber(NaN)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('Infinity 입력', () => {
+    expect(kNumber(Infinity)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('-Infinity 입력', () => {
+    expect(kNumber(-Infinity)).toBe(ErrorCollection.NOT_NUMBER);
+  });
+
+  test('onError가 undefined를 반환하면 에러 코드 문자열로 fallback', () => {
+    expect(
+      kNumber(3.14, { onError: () => undefined })
+    ).toBe(ErrorCollection.NOT_INTEGER);
   });
 
 });

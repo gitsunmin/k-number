@@ -1,11 +1,12 @@
 {
   "name": "@gitsunmin/k-number",
-  "version": "0.3.0",
-  "description": "숫자를 입력하면 한글 수사를 반환하는 기능을 제공하는 라이브러리입니다. (ex. 1234 -> 천이백삼십",
+  "version": "1.0.0",
+  "description": "숫자를 입력하면 한글 수사를 반환하는 기능을 제공하는 라이브러리입니다. (ex. 1234 -> 천이백삼십사)",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": {
@@ -31,19 +32,30 @@
     "build": "tsc -p tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json",
     "launch": "bun run build && npm publish --access public",
     "launch:dry-run": "npm publish --dry-run",
-    "test": "jest --no-cache",
-    "test:watch": "jest --watchAll",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "keywords": [
-    "money",
-    "number",
     "korean",
-    "transform",
+    "korean-number",
+    "number-to-korean",
+    "korean-numeral",
+    "number",
+    "formatting",
+    "localization",
+    "i18n",
+    "한글",
     "한국어",
     "숫자",
+    "수사",
     "변환",
-    "금액"
+    "숫자변환",
+    "만",
+    "억",
+    "조"
   ],
   "license": "MIT",
   "repository": {
@@ -54,11 +66,10 @@
     "url": "https://github.com/gitsunmin/k-number/issues"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
+    "@vitest/coverage-v8": "^3.2.3",
     "husky": "^9.1.7",
-    "jest": "^30.2.0",
-    "ts-jest": "^29.4.6",
-    "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3"
+    "tsc-alias": "^1.8.17",
+    "typescript": "6.0.3",
+    "vitest": "^3.2.3"
   }
 }

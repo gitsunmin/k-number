@@ -23,8 +23,5 @@ export type NumberAndKoreanRecord = Record<
 
 export type KNumberConfig = {
   format?: KNumberFormat;
-  onError?: (error: ErrorCollectionValue) => string;
+  onError?: (error: ErrorCollectionValue) => string | undefined;
 };
-
-/** Minus String */
-export type MS<T> = '-' | T;

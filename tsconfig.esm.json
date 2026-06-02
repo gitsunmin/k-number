@@ -4,6 +4,6 @@
     "noEmit": false,
     "module": "ESNext",
     "outDir": "dist/esm",
-    "target": "es2015"
+    "target": "ES2020"
   }
 }

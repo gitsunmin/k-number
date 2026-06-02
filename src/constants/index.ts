@@ -50,3 +50,13 @@ export const BIG_UNITS: KoreanUnit[] = ['만', '억', '조', '경'];
 export const SMALL_UNITS: KoreanUnit[] = ['십', '백', '천'];
 
 export const LOG_PREFIX = '[@gitsunmin/k-number] >';
+
+export const BIG_UNITS_EXTENDED: string[] = [
+  '만', '억', '조', '경',
+  '해', '자', '양', '구', '간', '정', '재', '극',
+  '항하사', '아승기', '나유타', '불가사의', '무량대수',
+];
+
+export const MAX_BIGINT_NUMBER: bigint = BigInt(10) ** BigInt(72) - 1n;
+
+export const MIN_BIGINT_NUMBER: bigint = -(BigInt(10) ** BigInt(72) - 1n);

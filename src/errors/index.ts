@@ -6,6 +6,8 @@ export const ErrorCollection = {
   NOT_NUMBER: 'input is not number' as const,
   NOT_INTEGER: 'number is not integer' as const,
   UNKNOWN_ERROR: 'unknown error' as const,
+  OVER_BIGINT_MAX_NUMBER: 'bigint is too big' as const,
+  UNDER_BIGINT_MIN_NUMBER: 'bigint is too small' as const,
 };
 
 export type ErrorCollectionValue = typeof ErrorCollection[keyof typeof ErrorCollection];

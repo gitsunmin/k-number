@@ -4,14 +4,32 @@
 
 ## [1.0.0] - 2026-06-02
 
+### Added (BigInt 지원)
+
+- `kNumber(input: bigint)` 오버로드 추가 — `number` 경로는 기존과 동일, BigInt 전용 경로만 신규
+- `BIG_UNITS_EXTENDED` 상수 추가: 만·억·조·경·해·자·양·구·간·정·재·극·항하사·아승기·나유타·불가사의·무량대수
+- `MAX_BIGINT_NUMBER` / `MIN_BIGINT_NUMBER` 상수 추가 (±(10^72 - 1), 무량대수 범위)
+- `ErrorCollection.OVER_BIGINT_MAX_NUMBER` / `UNDER_BIGINT_MIN_NUMBER` 에러 코드 추가
+- BigInt 전용 테스트 28건 추가 (`src/test/bigint.test.ts`)
+
 ### Fixed
 
+- `korean-only` 포맷에서 십·백·천 자리의 계수가 1일 때 `일`이 생략되지 않던 버그 수정
+  (국립국어원 표준: `일백` → `백`, `일천` → `천`; 만·억·조·경 앞 `일`은 유지)
+- `onError` 콜백이 `undefined` 반환 시 그대로 전파되던 버그 수정 — 에러 코드 문자열로 fallback
+- `isInteger` 유틸이 배럴 (`src/index.ts`)에 누락된 문제 수정
+  (`export * from './utils'` 추가)
 - `NaN`, `Infinity`, `-Infinity` 입력 시 `NOT_INTEGER` 대신 `NOT_NUMBER` 반환하도록 수정
 - `safe()` 포맷 검증 로직을 `K_NUMBER_FORMAT` 상수 기반으로 변경 (하드코딩 제거)
 - `functionByFormat`의 `'mixed'` dead code 제거 및 반환 타입 명확화
 
 ### Added
 
+- `일` 생략 규칙 관련 테스트 16건 추가 (`src/test/format-korean-only.test.ts`)
+- `onError` undefined fallback 테스트 추가 (`src/test/invalid-input.test.ts`)
+- 퍼블릭 API / 배럴 export / `catch` 블록 커버리지 테스트 추가
+  (`src/test/public-api.test.ts`)
+- `.markdownlint.json` 추가 — `MD024 siblings_only` 설정으로 CHANGELOG 중복 헤더 경고 해소
 - `NaN` / `Infinity` / `-Infinity` 입력 처리 테스트 추가 (`src/test/invalid-input.test.ts`)
 - `mixed` 포맷 경계값 테스트 파일 추가 (`src/test/edge-cases.test.ts`)
 - GitHub Actions CI 워크플로우 추가 (`.github/workflows/ci.yml`)
@@ -20,6 +38,12 @@
 
 ### Changed
 
+- `onError` 타입을 `(error) => string | undefined`로 변경 — `undefined` 반환 허용
+- `getUnit` 내부 `slice + join` 패턴을 직접 인덱스 비교로 교체 (중간 배열 할당 제거)
+- 음수 처리를 부호 분리 방식으로 변경 — 변환 함수에서 `'-'` 처리 제거
+- `safe()` 내부 중첩 함수 제거 → 모듈 레벨 `validate()` 함수로 분리
+- 내부 타입 `MS<T>` (Minus String)를 퍼블릭 API에서 제거
+- `isInteger` 유틸 대신 네이티브 `Number.isInteger()` 사용
 - 테스트 도구를 Jest에서 Vitest로 교체
   - `jest`, `ts-jest`, `@types/jest` 제거
   - `vitest`, `@vitest/coverage-v8` 추가
@@ -33,7 +57,8 @@
   - `moduleResolution` `node` → `bundler` (deprecated 옵션 제거)
   - `baseUrl` 제거, `paths` 를 프로젝트 루트 기준으로 변경 (`@/*` → `./src/*`)
   - `module: "ESNext"` 추가
-  - CJS 빌드(`tsconfig.cjs.json`): `moduleResolution: "node10"` + `ignoreDeprecations: "6.0"` 적용
+  - CJS 빌드(`tsconfig.cjs.json`): `moduleResolution: "node10"` +
+    `ignoreDeprecations: "6.0"` 적용
   - CJS/ESM 빌드 `target` `ES2015` → `ES2020`
 - README 전면 개편
   - 이모지 제거, 문장 격식화
@@ -204,7 +229,6 @@
 
 ---
 
-[Unreleased]: https://github.com/gitsunmin/k-number/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/gitsunmin/k-number/compare/v0.3.0...v1.0.0
 [0.3.0]: https://github.com/gitsunmin/k-number/compare/v0.2.3...v0.3.0
 [0.2.3]: https://github.com/gitsunmin/k-number/compare/v0.2.2...v0.2.3
